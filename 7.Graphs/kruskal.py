@@ -1,10 +1,12 @@
 from heapq import heapify, heappop
 from typing import NamedTuple, Optional
 
+
 WeightedGraph = dict[str, set[tuple[str, int]]]
 
 
 class Edge(NamedTuple):
+
     weight: int
     u: str
     v: str
@@ -24,13 +26,14 @@ class Edge(NamedTuple):
 def make_heap(graph: WeightedGraph) -> list[Edge]:
     result: set[Edge] = set()
     u: str
-    neighbors = set[tuple[str, int]]
+    neighbors: set[tuple[str, int]]
     for u, neighbors in graph.items():
         for neighbor in neighbors:
             v, weight = neighbor
             result.add(Edge(weight, u, v))
     queue: list[Edge] = list(result)
     heapify(queue)
+    return queue
 
 
 if __name__ == '__main__':
@@ -41,7 +44,7 @@ if __name__ == '__main__':
         'C': {('A', 5), ('D', 6), ('E', 7)},
         'D': {('C', 6), ('E', 2), ('F', 1)},
         'E': {('C', 7), ('D', 2), ('F', 3)},
-        'F': {('D', 1), ('E', 3)},
+        'F': {('D', 1), ('E', 3)}
     }
 
     e1 = Edge(5, 'A', 'B')
