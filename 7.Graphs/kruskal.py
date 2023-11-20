@@ -36,6 +36,12 @@ def make_heap(graph: WeightedGraph) -> list[Edge]:
     return queue
 
 
+def add_edge(graph: WeightedGraph, edge: Edge) -> None:
+    weight, u, v = edge
+    graph[u].add((v, weight))
+    graph[v].add((u, weight))
+
+
 if __name__ == '__main__':
     from pprint import pprint
     g1: WeightedGraph = {
